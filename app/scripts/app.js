@@ -29,7 +29,16 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/order', {
+        templateUrl: 'views/order.html',
+        controller: 'OrderCtrl',
+        controllerAs: 'order'
+      })
       .otherwise({
         redirectTo: '/'
       });
+
+  })
+  .run(function ($rootScope) {
+    $rootScope.meterials = [];
   });
