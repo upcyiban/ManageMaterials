@@ -14,7 +14,7 @@ angular.module('manageMaterialsApp')
     //   $scope.meterials = data;
     // });
     $scope.col = 'name';//默认按name列排序
-    $scope.desc = 0;//默认排序条件升序
+    $scope.desc = 0;//默认排序 降序
     $scope.orderButton = function (attr) {
       $rootScope.orderId = attr.meterial.id;
       $rootScope.orderName = attr.meterial.name;

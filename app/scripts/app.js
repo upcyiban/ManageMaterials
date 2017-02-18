@@ -36,6 +36,16 @@ angular
         controller: 'OrderCtrl',
         controllerAs: 'order'
       })
+      .when('/manager', {
+        templateUrl: 'views/manager.html',
+        controller: 'ManagerCtrl',
+        controllerAs: 'manager'
+      })
+      .when('/detail', {
+        templateUrl: 'views/detail.html',
+        controller: 'DetailCtrl',
+        controllerAs: 'detail'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -43,4 +53,5 @@ angular
   })
   .run(function ($rootScope) {
     $rootScope.meterials = [];
+    $rootScope.detail_meterail = [];
   });

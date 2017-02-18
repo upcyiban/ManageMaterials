@@ -58,13 +58,12 @@ angular.module('manageMaterialsApp')
 
     $scope.borrowerSubmit = function () {
       var phone = /^1[34578]\d{9}$/;
-      if(phone.test($scope.borrowerNumber)){
-        alert('手机号格式错误或时间错误');
-
+      if((!phone.test($scope.borrowerNumber))){
+        alert('手机号格式错误');
       }else {
           //发送数据
-        console.log($scope.startTime.toDateString());
-        console.log($scope.endTime.toDateString());
+        console.log($scope.startTime);
+        console.log($scope.endTime);
 
       }
     };
