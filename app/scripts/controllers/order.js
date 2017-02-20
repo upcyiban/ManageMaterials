@@ -62,8 +62,23 @@ angular.module('manageMaterialsApp')
         alert('手机号格式错误');
       }else {
           //发送数据
-        console.log($scope.startTime);
-        console.log($scope.endTime);
+        var postData = $.param({
+          borrowerName: $scope.borrowerName ,
+          borrowerNumber : $scope.borrowerNumber ,
+          borrowNumber : $scope.borrowNumber ,
+          startTime : Date.parse($scope.startTime) ,
+          endTime : Date.parse($scope.endTime)
+        });
+        console.log(Date.parse($scope.startTime));
+        console.log(Date.parse($scope.endTime));
+        console.log(postData);
+        $http.post($rootScope.url + '/material/creat',postData).then(function (data) {
+          // if(data == 1){
+          //   alert("创建成功");
+          // }else{
+          //   alert("未知错误");
+          // }
+        });
 
       }
     };

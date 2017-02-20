@@ -10,7 +10,7 @@
 
 angular.module('manageMaterialsApp')
   .controller('MainCtrl', function ($scope, $http,$rootScope,$location) {
-    // $http.post('/').then(function (data) {
+    // $http.post($rootScope.url+'/material').then(function (data) {
     //   $scope.meterials = data;
     // });
     $scope.col = 'name';//默认按name列排序
@@ -22,39 +22,6 @@ angular.module('manageMaterialsApp')
       $rootScope.orderDescription = attr.meterial.description;
       $location.path('/order');
     };
-    $scope.meterials = [
-      {
-        id:1,
-        name : '桌子',
-        organization: 'yb1',
-        description:'haha',
-        number:'5'
-      },{
-        id:2,
-        name : 'xiong',
-        organization: 'yb2',
-        description:'ha',
-        number:'3'
-      },{
-        id:3,
-        name : 'xiong',
-        organization: 'yb3',
-        description:'ha',
-        number:'3'
-      },{
-        id:4,
-        name : 'xiong',
-        organization: 'yb4',
-        description:'ha',
-        number:'3'
-      },{
-        id:5,
-        name : 'xiong',
-        organization: 'yb5',
-        description:'ha',
-        number:'3'
-      }
-    ];
     $rootScope.meterials = $scope.meterials;
   });
 

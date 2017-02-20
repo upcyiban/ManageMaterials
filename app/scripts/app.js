@@ -19,7 +19,8 @@ angular
     'ngSanitize',
     'ui.bootstrap'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
+    $httpProvider.defaults.withCredentials = true;
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -51,7 +52,17 @@ angular
       });
 
   })
-  .run(function ($rootScope) {
+  .run(function ($rootScope, $http, $location) {
     $rootScope.meterials = [];
     $rootScope.detail_meterail = [];
+    $rootScope.url = 'http://localhost:8080';
+    //易班认证
+    // var APPID = "d3e9e3722272dc94";
+    // var CALLBACK = "http://f.yiban.cn/iapp55289";
+    // if ($location.search()['verify_request']) {
+    //   $http.get('http://localhost:8080/second/auth/?vq=' + $location.search()['verify_request']);
+    // }
+    // else {
+    //   window.location = 'https://openapi.yiban.cn/oauth/authorize?client_id=' + APPID + '&redirect_uri=' + CALLBACK + '&display=html';
+    // }
   });
