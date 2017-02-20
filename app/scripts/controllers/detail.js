@@ -9,5 +9,5 @@
  */
 angular.module('manageMaterialsApp')
   .controller('DetailCtrl', function ($rootScope) {
-    console.log($rootScope.detail_meterailId);
+    console.log($rootScope.detail_meterail);
   });
