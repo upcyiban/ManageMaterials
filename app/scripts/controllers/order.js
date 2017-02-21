@@ -8,7 +8,7 @@
  * Controller of the manageMaterialsApp
  */
 angular.module('manageMaterialsApp')
-  .controller('OrderCtrl', function ($scope,$rootScope) {
+  .controller('OrderCtrl', function ($scope,$rootScope,$http) {
     $scope.id = $rootScope.orderId ;
     $scope.name = $rootScope.orderName ;
     $scope.organization = $rootScope.orderOrganization ;
@@ -62,22 +62,29 @@ angular.module('manageMaterialsApp')
         alert('手机号格式错误');
       }else {
           //发送数据
-        var postData = $.param({
-          borrowerName: $scope.borrowerName ,
-          borrowerNumber : $scope.borrowerNumber ,
-          borrowNumber : $scope.borrowNumber ,
-          startTime : Date.parse($scope.startTime) ,
-          endTime : Date.parse($scope.endTime)
-        });
+        // var postData = {
+        //   borrowerName: $scope.borrowerName,
+        //   borrowerNumber: $scope.borrowerNumber,
+        //   borrowNumber: $scope.borrowNumber,
+        //   startTime: Date.parse($scope.startTime),
+        //   reason: $scope.reason,
+        //   materialId: $rootScope.orderId,
+        //   endTime: Date.parse($scope.endTime)
+        // };
         console.log(Date.parse($scope.startTime));
         console.log(Date.parse($scope.endTime));
-        console.log(postData);
-        $http.post($rootScope.url + '/material/creat',postData).then(function (data) {
-          // if(data == 1){
-          //   alert("创建成功");
-          // }else{
-          //   alert("未知错误");
-          // }
+        $http.get($rootScope.url + '/material/creat?borrowerName='
+          +$scope.borrowerName+'&borrowerNumber='+$scope.borrowerNumber+'&reason='+$scope.reason
+          +'&materialId='+$rootScope.orderId+'&borrowNumber='+$scope.borrowNumber+'&startTime='+Date.parse($scope.startTime)
+          +'&endTime='+Date.parse($scope.endTime)
+        ).then(function (response) {
+          if(response.data.code == 1){
+            alert("创建成功");
+            $location.path('/');
+          }else{
+            alert("未知错误");
+          }
+          console.log(response);
         });
 
       }

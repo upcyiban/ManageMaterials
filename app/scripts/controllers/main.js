@@ -10,9 +10,9 @@
 
 angular.module('manageMaterialsApp')
   .controller('MainCtrl', function ($scope, $http,$rootScope,$location) {
-    // $http.post($rootScope.url+'/material').then(function (data) {
-    //   $scope.meterials = data;
-    // });
+    $http.get($rootScope.url+'/material').then(function (response) {
+      $scope.meterials = response.data;
+    });
     $scope.col = 'name';//默认按name列排序
     $scope.desc = 0;//默认排序 降序
     $scope.orderButton = function (attr) {

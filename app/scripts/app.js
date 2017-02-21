@@ -55,14 +55,14 @@ angular
   .run(function ($rootScope, $http, $location) {
     $rootScope.meterials = [];
     $rootScope.detail_meterail = [];
-    $rootScope.url = 'http://localhost:8080';
+    $rootScope.url = 'http://localhost:8086';
     //易班认证
-    // var APPID = "d3e9e3722272dc94";
-    // var CALLBACK = "http://f.yiban.cn/iapp55289";
+    // var APPID = "f87c99a7211f2a44";
+    // var CALLBACK = "http://f.yiban.cn/iapp96401";
     // if ($location.search()['verify_request']) {
-    //   $http.get('http://localhost:8080/second/auth/?vq=' + $location.search()['verify_request']);
+    //   $http.get('http://localhost:8086/material/auth/?vq='+ $location.search()['verify_request']);
     // }
     // else {
-    //   window.location = 'https://openapi.yiban.cn/oauth/authorize?client_id=' + APPID + '&redirect_uri=' + CALLBACK + '&display=html';
+    //   window.location = 'https://openapi.yiban.cn/oauth/authorize?client_id='+APPID+'&redirect_uri='+CALLBACK+'&display=html';
     // }
   });

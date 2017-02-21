@@ -9,7 +9,7 @@
  */
 angular.module('manageMaterialsApp')
   .controller('UserCtrl', function ($scope, $http) {
-    // $http.post('/material/user').then(function (data) {
+    // $http.post($rootScope.url+'/material/user').then(function (data) {
     //     $scope.meterials = data;
     // });
   });

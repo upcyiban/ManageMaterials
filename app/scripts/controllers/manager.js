@@ -8,47 +8,20 @@
  * Controller of the manageMaterialsApp
  */
 angular.module('manageMaterialsApp')
-  .controller('ManagerCtrl', function ($scope,$location,$rootScope) {
-    // $http.post('/').then(function (data) {
-    //   $scope.meterials = data;
-    // });
+  .controller('ManagerCtrl', function ($scope,$location,$rootScope,$http) {
+    $http.post($rootScope.url+'/material').then(function (response) {
+      $scope.meterials = response.data;
+      console.log(response);
+    });
     $scope.col = 'name';//默认按name列排序
     $scope.desc = 1;//默认排序  降序
-    $scope.meterials = [
-      {
-        id:1,
-        name : '桌子',
-        organization: 'yb1',
-        description:'haha',
-        number:'5'
-      },{
-        id:2,
-        name : 'xiong',
-        organization: 'yb2',
-        description:'ha',
-        number:'3'
-      },{
-        id:3,
-        name : 'xiong',
-        organization: 'yb3',
-        description:'ha',
-        number:'3'
-      },{
-        id:4,
-        name : 'xiong',
-        organization: 'yb4',
-        description:'ha',
-        number:'3'
-      },{
-        id:5,
-        name : 'xiong',
-        organization: 'yb5',
-        description:'ha',
-        number:'3'
-      }
-    ];
+
+    //删除
     $scope.delete = function (attr) {
       console.log(attr.meterial.id);
+      $http.get($rootScope.url+'/material/delete?materialId='+attr.meterial.id).then(function (response) {
+        console.log(response);
+      })
     };
     $scope.showForm = false;
     $scope.newSubmit = function () {
