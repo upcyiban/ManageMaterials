@@ -8,7 +8,7 @@
  * Controller of the manageMaterialsApp
  */
 angular.module('manageMaterialsApp')
-  .controller('OrderCtrl', function ($scope,$rootScope,$http) {
+  .controller('OrderCtrl', function ($scope, $rootScope, $http, $location) {
     $scope.id = $rootScope.orderId ;
     $scope.name = $rootScope.orderName ;
     $scope.organization = $rootScope.orderOrganization ;
@@ -71,20 +71,17 @@ angular.module('manageMaterialsApp')
         //   materialId: $rootScope.orderId,
         //   endTime: Date.parse($scope.endTime)
         // };
-        console.log(Date.parse($scope.startTime));
-        console.log(Date.parse($scope.endTime));
         $http.get($rootScope.url + '/material/creat?borrowerName='
           +$scope.borrowerName+'&borrowerNumber='+$scope.borrowerNumber+'&reason='+$scope.reason
           +'&materialId='+$rootScope.orderId+'&borrowNumber='+$scope.borrowNumber+'&startTime='+Date.parse($scope.startTime)
           +'&endTime='+Date.parse($scope.endTime)
         ).then(function (response) {
           if(response.data.code == 1){
-            alert("创建成功");
-            $location.path('/');
+            alert("提交成功，等待审核");
+            //刷新界面
           }else{
             alert("未知错误");
           }
-          console.log(response);
         });
 
       }

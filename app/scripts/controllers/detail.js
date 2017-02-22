@@ -8,10 +8,8 @@
  * Controller of the manageMaterialsApp
  */
 angular.module('manageMaterialsApp')
-  .controller('DetailCtrl', function ($rootScope, $scope, $http) {
+  .controller('DetailCtrl', function ($rootScope, $scope) {
     console.log($rootScope.detail_meterail);
-    $http.post($rootScope.url + '/material/getOneMaterial', $rootScope.detail_meterail.id)
-      .then(function (data) {
-
-    });
+    $scope.borrowNumber = $rootScope.detail_meterail.borrowNumber;
+    //$scope.
   });

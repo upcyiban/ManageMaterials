@@ -55,6 +55,7 @@ angular
   .run(function ($rootScope, $http, $location) {
     $rootScope.meterials = [];
     $rootScope.detail_meterail = [];
+    //$rootScope.borrowMaterialmeterials =[];
     $rootScope.url = 'http://localhost:8086';
     //易班认证
     // var APPID = "f87c99a7211f2a44";
