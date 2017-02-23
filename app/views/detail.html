@@ -7,24 +7,29 @@
       <div class="panel-body">
         <h4>物资信息</h4>
         <p>物资名称</p>
-        <p></p>
+        <p>{{materialName}}</p>
         <p>所属单位</p>
-        <p>简介</p>
-        <p>可借数目</p>
+        <p>{{materialOrganization}}</p>
         <h4>借用人信息</h4>
         <p>姓名</p>
+        <p>{{borrowerName}}</p>
         <p>手机号</p>
+        <p>{{borrowerNumber}}</p>
         <p>借用数目</p>
+        <p>{{borrowNumber}}</p>
         <p>开始时间</p>
+        <p>{{creatTime}}</p>
         <p>截至时间</p>
+        <p>{{endTime}}</p>
         <h4>状态</h4>
+        <p>{{status}}</p>
         <p></p>
       </div>
       <div class="panel-footer">
-        <div ng-show="true">
+        <div ng-show="!agree">
           <h4>是否同意借用？</h4>
-          <button class="btn btn-default">是</button>
-          <button class="btn btn-default">否</button>
+          <button class="btn btn-default" ng-click="agreeBorrow()">是</button>
+          <button class="btn btn-default" ng-click="notBorrow()">否</button>
         </div>
         <div ng-show="true">
           <h4>是否归还？</h4>

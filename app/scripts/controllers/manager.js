@@ -17,12 +17,10 @@ angular.module('manageMaterialsApp')
 
     //删除
     $scope.delete = function (attr) {
-      console.log(attr.meterial.id);
       $http.get($rootScope.url+'/material/official/delete?materialId='+attr.meterial.id).then(function (response) {
-        console.log(response);
         if(response.data.code == 1){
           alert("删除成功");
-          $location.path('/manager');
+          $location.path('/');
         }else{
           alert('删除失败');
         }
@@ -47,7 +45,9 @@ angular.module('manageMaterialsApp')
       $scope.borrowMaterialmeterials = response.data;
       $rootScope.borrowMaterialmeterials = response.data;
       for(var i = 0;i<response.data.length;i++){
-        if(response.data[i].agree){
+        $scope.borrowMaterialmeterials[i].startTime = timetrans(response.data[i].startTime);
+        $scope.borrowMaterialmeterials[i].endTime = timetrans(response.data[i].endTime);
+        if(!response.data[i].agree){
           $scope.borrowMaterialmeterials[i].status = '申请中';
         }else {
           $scope.borrowMaterialmeterials[i].status = '借出中';
@@ -63,4 +63,6 @@ angular.module('manageMaterialsApp')
       $rootScope.detail_meterail = attr.borrowMaterialmeterial;
       $location.path('/detail');
     };
+
+
   });

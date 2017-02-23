@@ -62,15 +62,6 @@ angular.module('manageMaterialsApp')
         alert('手机号格式错误');
       }else {
           //发送数据
-        // var postData = {
-        //   borrowerName: $scope.borrowerName,
-        //   borrowerNumber: $scope.borrowerNumber,
-        //   borrowNumber: $scope.borrowNumber,
-        //   startTime: Date.parse($scope.startTime),
-        //   reason: $scope.reason,
-        //   materialId: $rootScope.orderId,
-        //   endTime: Date.parse($scope.endTime)
-        // };
         $http.get($rootScope.url + '/material/creat?borrowerName='
           +$scope.borrowerName+'&borrowerNumber='+$scope.borrowerNumber+'&reason='+$scope.reason
           +'&materialId='+$rootScope.orderId+'&borrowNumber='+$scope.borrowNumber+'&startTime='+Date.parse($scope.startTime)
@@ -78,7 +69,7 @@ angular.module('manageMaterialsApp')
         ).then(function (response) {
           if(response.data.code == 1){
             alert("提交成功，等待审核");
-            //刷新界面
+            $location.path('/');
           }else{
             alert("未知错误");
           }

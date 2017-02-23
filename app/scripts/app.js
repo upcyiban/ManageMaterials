@@ -17,7 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngSanitize',
-    'ui.bootstrap'
+    'ui.bootstrap.tpls'
   ])
   .config(function ($routeProvider, $httpProvider) {
     $httpProvider.defaults.withCredentials = true;
@@ -55,15 +55,26 @@ angular
   .run(function ($rootScope, $http, $location) {
     $rootScope.meterials = [];
     $rootScope.detail_meterail = [];
-    //$rootScope.borrowMaterialmeterials =[];
     $rootScope.url = 'http://localhost:8086';
-    //易班认证
-    // var APPID = "f87c99a7211f2a44";
-    // var CALLBACK = "http://f.yiban.cn/iapp96401";
-    // if ($location.search()['verify_request']) {
-    //   $http.get('http://localhost:8086/material/auth/?vq='+ $location.search()['verify_request']);
-    // }
-    // else {
-    //   window.location = 'https://openapi.yiban.cn/oauth/authorize?client_id='+APPID+'&redirect_uri='+CALLBACK+'&display=html';
-    // }
+
+
+
   });
+//时间戳转时间
+function timetrans(date){
+  var date = new Date(date);//如果date为10位不需要乘1000
+  var Y = date.getFullYear() + '-';
+  var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+  var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+  return Y+M+D;
+}
+//易班验证
+function verification() {
+  var APPID = "f87c99a7211f2a44";
+  var CALLBACK = "http://f.yiban.cn/iapp96401";
+  var yburl = 'https://openapi.yiban.cn/oauth/authorize?client_id='+APPID+'&redirect_uri='+CALLBACK+'&display=html';
+  window.location.href = yburl;
+  var str = window.location.search .substring(1);
+  var vq = str.split('=')[1].split('&')[0];
+  return vq;
+}

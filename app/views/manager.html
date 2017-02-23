@@ -86,10 +86,10 @@
               <th>详情</th>
             </tr>
             </thead>
-            <tbody ng-repeat="borrowMaterialmeterial in borrowMaterialmeterials|orderBy:col2:desc2|filter: search2">
+            <tbody ng-repeat="borrowMaterialmeterial in borrowMaterialmeterials|orderBy:col2:desc2|filter:search2">
             <tr>
-              <td>{{borrowMaterialmeterial.name}}</td>
-              <td>{{borrowMaterialmeterial.organization}}</td>
+              <td>{{borrowMaterialmeterial.materialName}}</td>
+              <td>{{borrowMaterialmeterial.materialOrganization}}</td>
               <td>{{borrowMaterialmeterial.startTime}}</td>
               <td>{{borrowMaterialmeterial.endTime}}</td>
               <td>{{borrowMaterialmeterial.status}}</td>
