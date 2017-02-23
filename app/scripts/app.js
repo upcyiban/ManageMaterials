@@ -17,7 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngSanitize',
-    'ui.bootstrap.tpls'
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, $httpProvider) {
     $httpProvider.defaults.withCredentials = true;
