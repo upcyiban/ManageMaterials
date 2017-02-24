@@ -9,6 +9,12 @@
  */
 angular.module('manageMaterialsApp')
   .controller('ManagerCtrl', function ($scope,$location,$rootScope,$http) {
+    $http.get($rootScope.url+ '/material/isadmin').then(function (response) {
+      if (response.data == -1) {
+        alert("not admin");
+        $location.path('/');
+      }
+    });
     $http.post($rootScope.url+'/material').then(function (response) {
       $scope.meterials = response.data;
     });
@@ -34,6 +40,7 @@ angular.module('manageMaterialsApp')
         +'&totalnumber='+$scope.newTotalNumber).then(function (response) {
         if(response.data.code ==1){
           alert("创建成功");
+          $location.path('/');
         }else{
           alert('未知错误');
         }

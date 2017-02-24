@@ -69,12 +69,21 @@ function timetrans(date){
   return Y+M+D;
 }
 //易班验证
-function verification() {
+function verification($http,$rootScope) {
   var APPID = "f87c99a7211f2a44";
   var CALLBACK = "http://f.yiban.cn/iapp96401";
-  var yburl = 'https://openapi.yiban.cn/oauth/authorize?client_id='+APPID+'&redirect_uri='+CALLBACK+'&display=html';
-  window.location.href = yburl;
-  var str = window.location.search .substring(1);
-  var vq = str.split('=')[1].split('&')[0];
-  return vq;
+  var url2 = window.location.href;
+  window.location.href = "https://openapi.yiban.cn/oauth/authorize?client_id=" + APPID + "&redirect_uri=" + CALLBACK + "&display=html";
+  if (url2.indexOf("verify_request") != -1) {
+    console.log('123');
+    var vq = window.location.href.split('=')[1].split('&')[0];
+    if (vq != '') {
+      console.log(vq);
+     $http.get($rootScope.url + '/material/auth?vq=' + vq).then(function (response) {
+       console.log(response.data);
+       window.location.href = 'http://localhost:9000';
+     });
+    }
+  }
 }
+

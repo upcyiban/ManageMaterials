@@ -8,8 +8,21 @@
  * Controller of the manageMaterialsApp
  */
 angular.module('manageMaterialsApp')
-  .controller('UserCtrl', function ($scope, $http) {
-    // $http.post($rootScope.url+'/material/user').then(function (data) {
-    //     $scope.meterials = data;
-    // });
+  .controller('UserCtrl', function ($scope, $http, $rootScope) {
+    $http.get($rootScope.url+'/material/borrower').then(function (response) {
+      console.log(response.data);
+      $scope.meterials = response.data;
+      for(var i = 0;i<response.data.length;i++){
+        $scope.meterials[i].startTime = timetrans(response.data[i].startTime);
+        $scope.meterials[i].endTime = timetrans(response.data[i].endTime);
+        if(!response.data[i].agree){
+          $scope.meterials[i].status = '申请中';
+        }else {
+          $scope.meterials[i].status = '借出中';
+          if(response.data[i].return){
+            $scope.meterials[i].status = '已归还';
+          }
+        }
+      }
+    });
   });

@@ -21,11 +21,11 @@
             </thead>
             <tbody ng-repeat="meterial in meterials|orderBy:col:desc|filter: search">
             <tr>
-              <td>{{meterial.name}}</td>
-              <td>{{meterial.organization}}</td>
+              <td>{{meterial.materialName}}</td>
+              <td>{{meterial.materialOrganization}}</td>
               <td>{{meterial.startTime}}</td>
               <td>{{meterial.endTime}}</td>
-              <td>{{meterial.returnStatus}}</td>
+              <td>{{meterial.status}}</td>
             </tr>
             </tbody>
           </table>

@@ -9,14 +9,13 @@
  */
 
 angular.module('manageMaterialsApp')
-  .controller('MainCtrl', function ($scope, $http,$rootScope,$location,$window) {
-    $http.get($rootScope.url+'/material/auth?vq=' + verification()).then(function (response) {
-        if(response.data ==1){
-          setTimeout(function () {
-            $window.stop();
-          },300);
-        }
+  .controller('MainCtrl', function ($scope, $http,$rootScope,$location) {
+    $http.get($rootScope.url + '/material/isauth').then(function (response) {
+      if (response.data == 0) {
+        verification($http,$rootScope);
+      }
     });
+
     $http.get($rootScope.url+'/material').then(function (response) {
       $scope.meterials = response.data;
     });
