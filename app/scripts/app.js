@@ -83,7 +83,6 @@ function verification($http,$rootScope) {
       console.log(vq);
      $http.get($rootScope.url + '/material/auth?vq=' + vq).then(function (response) {
        console.log(response.data);
-       window.location.href = 'http://localhost:9000';
      });
     }
   }

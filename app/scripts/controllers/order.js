@@ -61,7 +61,7 @@ angular.module('manageMaterialsApp')
       if(Date.parse($scope.endTime)<Date.parse($scope.startTime)){
         alert("时间出问题了");
       }else if($scope.borrowNumber>$scope.number){
-        alert("大学生长点心吧，都告诉你了");
+        alert("余量不足");
       }else {
         var phone = /^1[34578]\d{9}$/;
         if ((!phone.test($scope.borrowerNumber))) {
