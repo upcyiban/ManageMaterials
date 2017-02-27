@@ -55,19 +55,19 @@ angular
   .run(function ($rootScope) {
     $rootScope.meterials = [];
     $rootScope.detail_meterail = [];
-    $rootScope.url = 'http://localhost:8086';
+    $rootScope.url = 'http://yb.upc.edu.cn:8087"';
 
 
 
   });
 //时间戳转时间
 function timetrans(date){
-  var date = new Date(date*1000);//如果date为10位不需要乘1000
+  var date = new Date(date);
   var Y = date.getFullYear() + '-';
   var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
   var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
   var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
-  var m = (date.getMinutes() <10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+  var m = (date.getMinutes() <10 ? '0' + date.getMinutes() : date.getMinutes());
   return Y+M+D+h+m;
 }
 //易班验证
@@ -83,7 +83,7 @@ function verification($http,$rootScope) {
       console.log(vq);
      $http.get($rootScope.url + '/material/auth?vq=' + vq).then(function (response) {
        console.log(response.data);
-       window.location.href = 'http://localhost:9000';
+       window.location.href = 'http://yb.upc.edu.cn/project/borrowmaterial/';
      });
     }
   }
