@@ -26,6 +26,7 @@ angular.module('manageMaterialsApp')
       $rootScope.orderName = attr.meterial.name;
       $rootScope.orderOrganization = attr.meterial.organization;
       $rootScope.orderDescription = attr.meterial.description;
+      $rootScope.number = attr.meterial.number;
       $location.path('/order');
     };
     $rootScope.meterials = $scope.meterials;

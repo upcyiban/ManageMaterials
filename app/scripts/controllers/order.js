@@ -13,6 +13,7 @@ angular.module('manageMaterialsApp')
     $scope.name = $rootScope.orderName ;
     $scope.organization = $rootScope.orderOrganization ;
     $scope.description = $rootScope.orderDescription ;
+    $scope.number = $rootScope.number;
 
     //日历  不让用日历
     // $scope.startTime = new Date();
@@ -57,24 +58,30 @@ angular.module('manageMaterialsApp')
     // }
 
     $scope.borrowerSubmit = function () {
-      var phone = /^1[34578]\d{9}$/;
-      if((!phone.test($scope.borrowerNumber))){
-        alert('手机号格式错误');
+      if(Date.parse($scope.endTime)<Date.parse($scope.startTime)){
+        alert("时间出问题了");
+      }else if($scope.borrowNumber>$scope.number){
+        alert("大学生长点心吧，都告诉你了");
       }else {
+        var phone = /^1[34578]\d{9}$/;
+        if ((!phone.test($scope.borrowerNumber))) {
+          alert('手机号格式错误');
+        } else {
           //发送数据
-        $http.get($rootScope.url + '/material/creat?borrowerName='
-          +$scope.borrowerName+'&borrowerNumber='+$scope.borrowerNumber+'&reason='+$scope.reason
-          +'&materialId='+$rootScope.orderId+'&borrowNumber='+$scope.borrowNumber+'&startTime='+Date.parse($scope.startTime)
-          +'&endTime='+Date.parse($scope.endTime)
-        ).then(function (response) {
-          if(response.data.code == 1){
-            alert("提交成功，等待审核");
-            $location.path('/');
-          }else{
-            alert("未知错误");
-          }
-        });
+          $http.get($rootScope.url + '/material/creat?borrowerName='
+            + $scope.borrowerName + '&borrowerNumber=' + $scope.borrowerNumber + '&reason=' + $scope.reason
+            + '&materialId=' + $rootScope.orderId + '&borrowNumber=' + $scope.borrowNumber + '&startTime=' + Date.parse($scope.startTime)
+            + '&endTime=' + Date.parse($scope.endTime)
+          ).then(function (response) {
+            if (response.data.code == 1) {
+              alert("提交成功，等待审核");
+              $location.path('/');
+            } else {
+              alert("未知错误");
+            }
+          });
 
+        }
       }
     };
   });
