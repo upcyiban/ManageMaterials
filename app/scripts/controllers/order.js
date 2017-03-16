@@ -62,6 +62,7 @@ angular.module('manageMaterialsApp')
         alert("时间出问题了");
       }else if($scope.borrowNumber>$scope.number){
         alert("可借数目出错");
+        alert("余量不足");
       }else {
         var phone = /^1[34578]\d{9}$/;
         if ((!phone.test($scope.borrowerNumber))) {

@@ -1,4 +1,4 @@
-// Generated on 2017-02-17 using generator-angular 0.15.1
+// Generated on 2017-03-13 using generator-angular 0.15.1
 'use strict';
 
 // # Globbing
@@ -220,7 +220,7 @@ module.exports = function (grunt) {
             }
           }
       }
-    },
+    }, 
 
     // Renames files for browser caching purposes
     filerev: {
@@ -338,7 +338,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'manageMaterialsApp',
+          module: '2App',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },

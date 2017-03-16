@@ -9,8 +9,9 @@
  */
 
 angular.module('manageMaterialsApp')
-  .controller('MainCtrl', function ($scope, $http,$rootScope,$location) {
+  .controller('MainCtrl', function ($scope,$http,$rootScope,$location) {
     $http.get($rootScope.url + '/material/isauth').then(function (response) {
+      console.log(response);
       if (response.data == 0) {
         verification($http,$rootScope);
       }

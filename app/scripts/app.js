@@ -16,8 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngSanitize',
-    'ui.bootstrap'
+    'ngSanitize'
   ])
   .config(function ($routeProvider, $httpProvider) {
     $httpProvider.defaults.withCredentials = true;
@@ -55,10 +54,7 @@ angular
   .run(function ($rootScope) {
     $rootScope.meterials = [];
     $rootScope.detail_meterail = [];
-    $rootScope.url = 'http://yb.upc.edu.cn:8087"';
-
-
-
+    $rootScope.url = 'http://yb.upc.edu.cn:8087';
   });
 //时间戳转时间
 function timetrans(date){
@@ -77,14 +73,10 @@ function verification($http,$rootScope) {
   var url2 = window.location.href;
   window.location.href = "https://openapi.yiban.cn/oauth/authorize?client_id=" + APPID + "&redirect_uri=" + CALLBACK + "&display=html";
   if (url2.indexOf("verify_request") != -1) {
-    console.log('123');
     var vq = window.location.href.split('=')[1].split('&')[0];
+    console.log(vq);
     if (vq != '') {
-      console.log(vq);
-     $http.get($rootScope.url + '/material/auth?vq=' + vq).then(function (response) {
-       console.log(response.data);
-       window.location.href = 'http://yb.upc.edu.cn/project/borrowmaterial/';
-     });
+      $http.get($rootScope.url + '/material/auth?vq=' + vq);
     }
   }
 }

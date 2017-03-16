@@ -22,7 +22,7 @@ angular.module('manageMaterialsApp')
     $scope.return = $rootScope.detail_meterail.return;
 
     $scope.agreeBorrow = function () {
-      $http.get($rootScope.url+'/material/official/agree?borrowMaterialId='+$rootScope.detail_meterail.id).then(function (response) {
+      $http.get($rootScope.url+'/material/official/agree?borrowMaterialId='+$rootScope.detail_meterail.id+'&isAgree=1').then(function (response) {
         if(response.data.code == 1){
           alert('同意');
           $location.path('/manager');
@@ -30,7 +30,10 @@ angular.module('manageMaterialsApp')
       });
     };
     $scope.notBorrow = function () {
-        alert('未同意');
+        $http.get($rootScope.url+'/material/official/agree?borrowMaterialId='+$rootScope.detail_meterail.id+'isAgree=0').then(function (response) {
+          alert('未同意');
+          $location.path('/manager');
+        });
     };
     $scope.back = function () {
       $http.get($rootScope.url +'/material/official/evaluate?borrowMaterialId='

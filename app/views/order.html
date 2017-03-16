@@ -19,30 +19,31 @@
     </table>
     <form>
       <div class="form-group">
-        <label for="borrowerName">借用人姓名</label>
+        <label>借用人姓名</label>
         <input type="text" class="form-control" placeholder="姓名" ng-model="borrowerName">
       </div>
       <div class="form-group">
-        <label for="borrowerNumber">借用人手机</label>
+        <label>借用人手机</label>
         <input type="text" class="form-control" placeholder="手机号" ng-model="borrowerNumber">
       </div>
       <div class="form-group">
-        <label for="borrowNumber">借用数目</label>
-        <label for="">**注意可借数目</label>
+        <label>借用数目</label>
+
+        <label>**注意可借数目</label>
         <input type="text" class="form-control" placeholder="请填整数" ng-model="borrowNumber">
       </div>
       <div class="form-group">
-        <label for="reason">借用原因</label>
+        <label>借用原因</label>
         <input type="text" class="form-control" placeholder="" ng-model="reason">
       </div>
       <div class="form-group">
-        <label for="startTime">开始时间</label>
-        <label for="">格式：2014-04-23 18:55</label>
+        <label>开始时间</label>
+        <label>格式：2014-04-23 18:55</label>
         <input type="text" class="form-control" placeholder="" ng-model="startTime">
       </div>
       <div class="form-group">
-        <label for="endTime">截至时间</label>
-        <label for="">格式：2014-04-23 18:55</label>
+        <label>截至时间</label>
+        <label>格式：2014-04-23 18:55</label>
         <input type="text" class="form-control" placeholder="" ng-model="endTime">
       </div>
       <button type="submit" class="btn btn-default" ng-click="borrowerSubmit()">Submit</button>

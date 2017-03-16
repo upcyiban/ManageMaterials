@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('manageMaterialsApp'));
+  beforeEach(module('2App'));
 
   var MainCtrl,
     scope;

@@ -49,20 +49,21 @@ angular.module('manageMaterialsApp')
 
     //借用记录
     $http.get($rootScope.url+'/material/official').then(function (response) {
+      console.log(response.data);
       $scope.borrowMaterialmeterials = response.data;
       $rootScope.borrowMaterialmeterials = response.data;
       for(var i = 0;i<response.data.length;i++){
         $scope.borrowMaterialmeterials[i].startTime = timetrans(response.data[i].startTime);
         $scope.borrowMaterialmeterials[i].endTime = timetrans(response.data[i].endTime);
-        if(response.data[i].agree== 0){
+        if(response.data[i].isAgree== 0){
           $scope.borrowMaterialmeterials[i].status = '申请中';
-        }else if(response.data[i].agree== -1){
+        }else if(response.data[i].isAgree==-1){
           $scope.borrowMaterialmeterials[i].status = '申请失败';
         }else {
           $scope.borrowMaterialmeterials[i].status = '借出中';
-          if(response.data[i].return){
-            $scope.borrowMaterialmeterials[i].status = '已归还';
-          }
+        }
+        if(response.data[i].return){
+          $scope.borrowMaterialmeterials[i].status = '已归还';
         }
       }
     });
