@@ -58,6 +58,8 @@ angular.module('manageMaterialsApp')
     // }
 
     $scope.borrowerSubmit = function () {
+      $scope.endTime = String($scope.endTime).replace(/^([\d\s\W]+)：(\d+)$/g,"$1:$2");
+      $scope.startTime = String($scope.startTime).replace(/^([\d\s\W]+)：(\d+)$/g,"$1:$2");
       if(Date.parse($scope.endTime)<Date.parse($scope.startTime)){
         alert("时间出问题了");
       }else if($scope.borrowNumber>$scope.number){
